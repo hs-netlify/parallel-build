@@ -1,5 +1,4 @@
 import fs from "fs";
-import fetch from "node-fetch";
 import { NetlifyAPI } from "netlify";
 
 //Replace below token with Env var
