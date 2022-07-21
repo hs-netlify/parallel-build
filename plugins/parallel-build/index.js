@@ -1,14 +1,14 @@
-const fs = require("fs");
+import { generateSites } from "./generateSites.js";
+import { ignorePages } from "./ignorePages.js";
 
-module.exports = {
-  onPreBuild: ({ inputs }) => {
-    const dir = "./pages/movie2";
-    fs.rm(dir, { recursive: true }, (err) => {
-      if (err) {
-        throw err;
-      }
+export const onPreBuild = async function ({ inputs }) {
+  const target = inputs.target;
+  const directory = "./pages";
 
-      console.log(`${dir} is deleted!`);
-    });
-  },
+  console.log("Generating Sites");
+  await generateSites(directory);
+
+  if (target) {
+    ignorePages(directory, target);
+  }
 };
