@@ -10,7 +10,5 @@
   to = '/.netlify/functions/:splat'
   status = 200
 
-[[headers]]
- for = '/*'
- [headers.values]
-     X-Test-Header = 'test'
+[[plugins]]
+  package = '/plugins/parallel-build'
