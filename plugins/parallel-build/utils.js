@@ -20,8 +20,8 @@ export const setToml = (netlifyConfig, path) => {
 
 export const checkDiff = (git, target, build) => {
   const targetFiles = target
-    ? git.fileMatch(`/pages/${target}/**/*`)
-    : git.fileMatch("/pages/*");
+    ? git.fileMatch(`pages/${target}/**/*`)
+    : git.fileMatch("pages/*");
 
   console.log("Files Matched: ", targetFiles);
   if (
