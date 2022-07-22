@@ -1,14 +1,16 @@
 import { generateSites } from "./generateSites.js";
 import { ignorePages } from "./ignorePages.js";
 
-export const onPreBuild = async function ({ inputs }) {
-  const target = inputs.target;
-  const directory = "./pages";
+const target = process.env.PARALLEL_PAGE_FRAG;
+
+export const onPreBuild = async function () {
+  const path = "./pages";
+  console.log("target", target);
 
   console.log("Generating Sites");
-  await generateSites(directory);
-
-  if (target) {
-    ignorePages(directory, target);
+  if (!target) {
+    await generateSites(path);
   }
+
+  ignorePages(path, target);
 };

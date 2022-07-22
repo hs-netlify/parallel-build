@@ -1,5 +1,6 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
+import { getDirectories } from "./utils.js";
 
 //Replace below token with Env var
 const api = new NetlifyAPI("-QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ");
@@ -7,12 +8,6 @@ const api = new NetlifyAPI("-QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ");
 export const generateSites = async (path) => {
   const sites = await api.listSites();
   const siteNames = sites.map((site) => site.name);
-
-  const getDirectories = (path) => {
-    return fs.readdirSync(path).filter((file) => {
-      return fs.statSync(path + "/" + file).isDirectory();
-    });
-  };
 
   const dirs = getDirectories(path);
 
@@ -28,16 +23,13 @@ export const generateSites = async (path) => {
             private: false,
             branch: "main",
           },
+          build_settings: {
+            env: {
+              PARALLEL_PAGE_FRAG: `${dir}`,
+            },
+          },
         },
       });
     }
-
-    // else {
-    //   const site = sites.find(
-    //     (site) => site.name === `parallel-test-pages-${dir}`
-    //   );
-    //   const deploy = await api.createSiteDeploy({ site_id: site.id, body: {} });
-    //   console.log(`Site ${site.name} redeployed - ${deploy.id}`);
-    // }
   }
 };
