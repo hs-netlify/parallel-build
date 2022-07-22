@@ -23,6 +23,10 @@ export const checkDiff = (git, target, build) => {
     console.log("Modified files:", git.modifiedFiles);
   }
 
+  if (!target) {
+    return;
+  }
+
   const targetFiles = target
     ? git.fileMatch(`pages/${target}/**/*`)
     : git.fileMatch("pages/*");
