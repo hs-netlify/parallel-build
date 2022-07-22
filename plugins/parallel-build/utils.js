@@ -24,7 +24,12 @@ export const checkDiff = (git, target, build) => {
     : git.fileMatch("/pages/*");
 
   console.log("Files Matched: ", targetFiles);
-  if (targetFiles.edited.length !== 0) {
+  if (
+    targetFiles.edited.length !== 0 ||
+    targetFiles.modified.length !== 0 ||
+    targetFiles.created.length !== 0 ||
+    targetFiles.deleted.length !== 0
+  ) {
     console.log("Re-building sub-site");
   } else {
     build.cancelBuild("Cancelling sub-site build - no files changed");
