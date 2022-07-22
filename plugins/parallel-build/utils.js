@@ -11,7 +11,7 @@ export const setToml = (netlifyConfig, path) => {
   for (const dir of dirs) {
     netlifyConfig.redirects.push({
       from: `/${dir}/*`,
-      to: `https://parallel-test-pages-${dir}/${dir}/:splat`,
+      to: `https://parallel-test-pages-${dir}.netlify.app/${dir}/:splat`,
       status: 200,
       force: true,
     });
