@@ -17,3 +17,9 @@ export const setToml = (netlifyConfig, path) => {
     });
   }
 };
+
+export const checkDiff = (git, target) => {
+  if (git.modifiedFiles.length !== 0) {
+    console.log("Modified files:", git.modifiedFiles);
+  }
+};
