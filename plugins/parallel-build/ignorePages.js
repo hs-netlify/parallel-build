@@ -3,6 +3,7 @@ import { getDirectories } from "./utils.js";
 
 export const ignorePages = (path, target) => {
   const dirs = getDirectories(path);
+  console.log(dirs);
 
   fs.readdir(path, (err, files) => {
     if (err) throw err;
@@ -13,18 +14,17 @@ export const ignorePages = (path, target) => {
             if (err) {
               throw err;
             }
-            console.log(`${file} is deleted!`);
+            console.log(`${file} not being built`);
           });
         }
       }
     } else {
-      for (const dir in dirs) {
-        console.log("dir", dir);
+      for (const dir of dirs) {
         fs.rm(`./pages/${dir}`, { recursive: true }, (err) => {
           if (err) {
             throw err;
           }
-          console.log(`${file} is deleted!`);
+          console.log(`${dir}/* not being built`);
         });
       }
     }

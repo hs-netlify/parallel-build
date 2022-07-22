@@ -1,4 +1,3 @@
-import fs from "fs";
 import { NetlifyAPI } from "netlify";
 import { getDirectories } from "./utils.js";
 
@@ -11,8 +10,10 @@ export const generateSites = async (path) => {
 
   const dirs = getDirectories(path);
 
+  console.log("Checking sub-sites are created");
   for (const dir of dirs) {
     if (!siteNames.includes(`parallel-test-pages-${dir}`)) {
+      console.log("Creating sub-site `parallel-test-pages-${dir}`");
       const site = await api.createSite({
         account_slug: "henry-smith",
         body: {
