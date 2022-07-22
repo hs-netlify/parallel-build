@@ -18,8 +18,15 @@ export const setToml = (netlifyConfig, path) => {
   }
 };
 
-export const checkDiff = (git, target) => {
-  if (git.modifiedFiles.length !== 0) {
-    console.log("Modified files:", git.modifiedFiles);
+export const checkDiff = (git, target, build) => {
+  const targetFiles = target
+    ? git.fileMatch(`/pages/${target}/**/*`)
+    : git.fileMatch("/pages/*");
+
+  console.log("Files Matched: ", targetFiles);
+  if (targetFiles.edited.length !== 0) {
+    console.log("Re-building sub-site");
+  } else {
+    build.cancelBuild("Cancelling sub-site build - no files changed");
   }
 };
