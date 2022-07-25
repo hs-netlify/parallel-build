@@ -15,8 +15,9 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
     setToml(netlifyConfig, path);
   }
 
-  if (process.env.PARALLEL_BUILT) {
+  if (!process.env.PARALLEL_BUILT) {
     await checkDiff(git, target, build);
+  } else {
     netlifyConfig.build.environment.PARALLEL_BUILT = true;
   }
   ignorePages(path, target);
