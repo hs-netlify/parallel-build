@@ -12,7 +12,7 @@ export const setToml = (netlifyConfig, path) => {
     netlifyConfig.redirects.push({
       from: `/${dir}/*`,
       to: `https://parallel-test-pages-${dir}.netlify.app/${dir}/:splat`,
-      status: 200,
+      status: 301,
       force: true,
     });
   }
@@ -43,3 +43,5 @@ export const checkDiff = (git, target, build) => {
     build.cancelBuild("Cancelling sub-site build - no files changed");
   }
 };
+
+export const setEnvVar = (siteId, key, value) => {};

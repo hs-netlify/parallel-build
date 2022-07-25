@@ -6,4 +6,12 @@ module.exports = {
   images: {
     domains: ["image.tmdb.org"],
   },
+
+  compiler: {
+
+      meaninglessFileNames?: false,
+
+    },
+  },
+}
 };
