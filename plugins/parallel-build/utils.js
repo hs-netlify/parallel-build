@@ -15,6 +15,12 @@ export const setToml = (netlifyConfig, path) => {
       status: 301,
       force: true,
     });
+    netlifyConfig.redirects.push({
+      from: `/${dir}/${dir}/*`,
+      to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
+      status: 301,
+      force: true,
+    });
   }
 };
 
