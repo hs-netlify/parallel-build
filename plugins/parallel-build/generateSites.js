@@ -28,7 +28,9 @@ export const generateSites = async (path) => {
             env: {
               PARALLEL_PAGE_FRAG: `${dir}`,
               PARALLEL_BUILT: true,
+              PARALLEL_BUILD_DIR: `build_${dir}`,
             },
+            dir: `build_${dir}`,
           },
         },
       });
