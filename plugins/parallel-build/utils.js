@@ -12,13 +12,13 @@ export const setToml = (netlifyConfig, path) => {
     netlifyConfig.redirects.push({
       from: `/${dir}/*`,
       to: `https://parallel-test-pages-${dir}.netlify.app/${dir}/:splat`,
-      status: 301,
+      status: 200,
       force: true,
     });
     netlifyConfig.redirects.push({
       from: `/${dir}/${dir}/*`,
       to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
-      status: 301,
+      status: 200,
       force: true,
     });
   }
@@ -49,5 +49,3 @@ export const checkDiff = (git, target, build) => {
     build.cancelBuild("Cancelling sub-site build - no files changed");
   }
 };
-
-export const setEnvVar = (siteId, key, value) => {};
