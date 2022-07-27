@@ -9,18 +9,18 @@ export const getDirectories = (path) => {
 export const setToml = (netlifyConfig, path) => {
   const dirs = getDirectories(path);
   for (const dir of dirs) {
-    // netlifyConfig.redirects.push({
-    //   from: `/${dir}/*`,
-    //   to: `https://parallel-test-pages-${dir}.netlify.app/${dir}/:splat`,
-    //   status: 200,
-    //   force: true,
-    // });
     netlifyConfig.redirects.push({
-      from: `/${dir}/${dir}/*`,
-      to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
+      from: `/${dir}/*`,
+      to: `https://parallel-test-pages-${dir}.netlify.app/${dir}/:splat`,
       status: 200,
       force: true,
     });
+    // netlifyConfig.redirects.push({
+    //   from: `/${dir}/${dir}/*`,
+    //   to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
+    //   status: 200,
+    //   force: true,
+    // });
   }
 };
 
