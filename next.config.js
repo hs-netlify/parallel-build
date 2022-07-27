@@ -4,12 +4,12 @@ module.exports = {
     return "const-id";
   },
   assetPrefix: process.env.PARALLEL_PAGE_FRAG || "",
-  rewrites() {
-    return [
-      {
-        source: `/${process.env.PARALLEL_PAGE_FRAG}/${process.env.PARALLEL_PAGE_FRAG}/_next/:path*`,
-        destination: `https://parallel-test-pages-${process.env.PARALLEL_PAGE_FRAG}.netlify.app/_next/:path*`,
-      },
-    ];
-  },
+  // rewrites() {
+  //   return [
+  //     {
+  //       source: `/${process.env.PARALLEL_PAGE_FRAG}/${process.env.PARALLEL_PAGE_FRAG}/_next/:path*`,
+  //       destination: `https://parallel-test-pages-${process.env.PARALLEL_PAGE_FRAG}.netlify.app/_next/:path*`,
+  //     },
+  //   ];
+  // },
 };
