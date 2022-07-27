@@ -24,7 +24,7 @@ export const ignorePages = (path, target) => {
           if (err) {
             throw err;
           }
-          console.log(`${dir}/* not being built`);
+          console.log(`${dir} not being built`);
         });
       }
     }
