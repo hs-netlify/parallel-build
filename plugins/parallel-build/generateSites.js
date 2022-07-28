@@ -32,7 +32,6 @@ export const generateSites = async (path) => {
           },
         },
       });
-      console.log(JSON.stringify(site));
     }
   }
 };
