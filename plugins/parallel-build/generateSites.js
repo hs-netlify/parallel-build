@@ -13,11 +13,11 @@ export const generateSites = async (path) => {
   console.log("Checking sub-sites are created");
   for (const dir of dirs) {
     if (!siteNames.includes(`parallel-test-pages-${dir}`)) {
-      console.log("Creating sub-site `parallel-test-pages-${dir}`");
+      console.log(`Creating sub-site parallel-test-pages-${dir}`);
       const site = await api.createSite({
-        account_name: "monetronic",
-        account_slug: "monetronic",
         body: {
+          account_name: "monetronic",
+          account_slug: "monetronic",
           name: `parallel-test-pages-${dir}`,
           repo: {
             provider: "github",
