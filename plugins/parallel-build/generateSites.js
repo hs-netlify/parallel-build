@@ -1,5 +1,6 @@
 import { NetlifyAPI } from "netlify";
 import { getDirectories } from "./utils.js";
+import fetch from "node-fetch";
 
 //Replace below token with Env var
 const api = new NetlifyAPI("-QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ");
