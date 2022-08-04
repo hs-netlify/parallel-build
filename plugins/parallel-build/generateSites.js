@@ -6,7 +6,14 @@ import fetch from "node-fetch";
 const api = new NetlifyAPI("-QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ");
 const token = "-QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ";
 export const generateSites = async (path) => {
-  const sites = await api.listSites();
+  const sites = await (
+    await fetch("https://api.netlify.com/api/v1/moneytronic/sites", {
+      headers: {
+        Authorization: `Bearer -QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ`,
+      },
+    })
+  ).json();
+
   const siteNames = sites.map((site) => site.name);
 
   const dirs = getDirectories(path);
@@ -24,7 +31,7 @@ export const generateSites = async (path) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: {
+          body: JSON.stringify({
             account_slug: "moneytronic",
             name: `parallel-test-pages-${dir}`,
             repo: {
@@ -39,7 +46,7 @@ export const generateSites = async (path) => {
                 PARALLEL_BUILT: true,
               },
             },
-          },
+          }),
         }
       );
     }
