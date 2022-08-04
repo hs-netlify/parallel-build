@@ -31,7 +31,7 @@ export const checkDiff = (git, target, build) => {
 
   if (!target) {
     return;
-  }
+  } 
 
   const targetFiles = target
     ? git.fileMatch(`pages/${target}/**/*`)
