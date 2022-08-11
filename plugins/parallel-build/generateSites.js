@@ -18,7 +18,7 @@ export const generateSites = async (path) => {
       console.log(`Creating sub-site parallel-test-pages-${dir}`);
 
       const site = await api.createSiteInTeam({
-        account_slug: "moneytronic",
+        account_slug: account,
         body: {
           name: `parallel-test-pages-${dir}`,
           repo: {
