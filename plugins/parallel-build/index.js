@@ -14,9 +14,10 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
     await generateSites(path, netlifyConfig);
     setToml(netlifyConfig, path);
   }
+  //Put back if we can skip for first build
+  // if (target) {
+  //   await checkDiff(git, target, build);
+  // }
 
-  if (target) {
-    await checkDiff(git, target, build);
-  }
   ignorePages(path, target);
 };
