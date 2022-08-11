@@ -32,11 +32,6 @@ export const generateSites = async (path, netlifyConfig) => {
               PARALLEL_PAGE_FRAG: `${dir}`,
             },
           },
-          // build_settings: {
-          //   env: {
-          //     PARALLEL_PAGE_FRAG: `${dir}`,
-          //   },
-          // },
         },
       });
     }
