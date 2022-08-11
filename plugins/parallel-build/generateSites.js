@@ -26,6 +26,8 @@ export const generateSites = async (path, netlifyConfig) => {
             repo: "hs-netlify/parallel-build",
             private: false,
             branch: "main",
+            cmd: netlifyConfig.build.command,
+            dir: ".next",
           },
           build_settings: {
             cmd: netlifyConfig.build.command,
