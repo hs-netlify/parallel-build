@@ -6,7 +6,7 @@ const account = process.env.PARALLEL_NETLIFY_ACCOUNT;
 
 const api = new NetlifyAPI(token);
 
-export const generateSites = async (path) => {
+export const generateSites = async (path, netlifyConfig) => {
   const sites = await api.listSites();
   const siteNames = sites.map((site) => site.name);
 
@@ -28,6 +28,8 @@ export const generateSites = async (path) => {
             branch: "main",
           },
           build_settings: {
+            cmd: netlifyConfig.build.command,
+            dir: ".next",
             env: {
               PARALLEL_PAGE_FRAG: `${dir}`,
             },

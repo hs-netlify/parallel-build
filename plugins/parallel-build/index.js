@@ -11,7 +11,7 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
   console.log("target", target);
 
   if (!target) {
-    await generateSites(path);
+    await generateSites(path, netlifyConfig);
     setToml(netlifyConfig, path);
   }
 
