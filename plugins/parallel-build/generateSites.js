@@ -1,15 +1,14 @@
-import { NetlifyAPI } from "netlify";
 import { getDirectories } from "./utils.js";
 import fetch from "node-fetch";
 
-//Replace below token with Env var
-const api = new NetlifyAPI("-QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ");
-const token = "-QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ";
+const token = process.env.PARALLEL_NETLIFY_API_KEY;
+const account = process.env.PARALLEL_NETLIFY_ACCOUNT;
+
 export const generateSites = async (path) => {
   const sites = await (
-    await fetch("https://api.netlify.com/api/v1/moneytronic/sites", {
+    await fetch(`https://api.netlify.com/api/v1/${account}/sites`, {
       headers: {
-        Authorization: `Bearer -QWMHUqdjIuYXp3i9xvQJFRhI25Q4lAJkxF05RcRpkQ`,
+        Authorization: `Bearer ${token}`,
       },
     })
   ).json();
@@ -32,7 +31,7 @@ export const generateSites = async (path) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            account_slug: "moneytronic",
+            account_slug: account,
             name: `parallel-test-pages-${dir}`,
             repo: {
               provider: "github",

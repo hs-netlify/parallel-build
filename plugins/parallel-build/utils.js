@@ -37,6 +37,7 @@ export const checkDiff = (git, target, build) => {
     ? git.fileMatch(`pages/${target}/**/*`)
     : git.fileMatch("pages/*");
 
+  
   console.log("Files Matched: ", targetFiles);
   if (
     targetFiles.edited.length !== 0 ||
