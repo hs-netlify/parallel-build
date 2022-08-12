@@ -53,7 +53,7 @@ export const checkDiff = (git, target, build) => {
 
 export const setParallelBuilt = async (netlifyConfig) => {
   const { SITE_ID: site_id } = netlifyConfig.build.environment;
-
+  console.log("SI", site_id);
   let env = (await api.getSite({ site_id }))?.build_settings?.env;
   console.log("Collected current envs : ", JSON.stringify(env));
   env["PARALLEL_BUILT"] = true;
