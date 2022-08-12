@@ -28,6 +28,11 @@ export const generateSites = async (path, netlifyConfig) => {
             branch: "main",
             cmd: netlifyConfig.build.command,
             dir: ".next",
+            // env: {
+            //   PARALLEL_PAGE_FRAG: `${dir}`,
+            // },
+          },
+          build_settings: {
             env: {
               PARALLEL_PAGE_FRAG: `${dir}`,
             },
