@@ -9,7 +9,7 @@ export const ignorePages = (path, target) => {
     if (err) throw err;
     if (target) {
       for (const file of files) {
-        if (file !== target && file !== "_app.js" && file !== "index.js") {
+        if (file !== target && file !== "_app.js") {
           fs.rm(`./pages/${file}`, { recursive: true }, (err) => {
             if (err) {
               throw err;
