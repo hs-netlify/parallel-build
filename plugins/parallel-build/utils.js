@@ -1,10 +1,6 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
 
-const token = process.env.PARALLEL_NETLIFY_API_KEY;
-
-const api = new NetlifyAPI(token);
-
 export const getDirectories = (path) => {
   return fs.readdirSync(path).filter((file) => {
     return fs.statSync(path + "/" + file).isDirectory();
@@ -52,11 +48,14 @@ export const checkDiff = (git, target, build) => {
 };
 
 export const setParallelBuilt = async (netlifyConfig) => {
+  const token = process.env.PARALLEL_NETLIFY_API_KEY;
+  const api = new NetlifyAPI(token);
+
   const { SITE_ID: site_id } = netlifyConfig.build.environment;
 
-  const site = await api.getSite({ site_id });
+  const site = await api.getSite({ site_id: site_id });
   console.log("Site", site);
-  let env = (await api.getSite({ site_id }))?.build_settings?.env;
+  let env = (await api.getSite({ site_id: site_id }))?.build_settings?.env;
   console.log("Collected current envs : ", JSON.stringify(env));
   env["PARALLEL_BUILT"] = true;
 
