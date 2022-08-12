@@ -11,4 +11,7 @@
   status = 200
 
 [[plugins]]
+  package = '/plugins/parallel-build'
+
+[[plugins]]
   package = "@netlify/plugin-nextjs"
