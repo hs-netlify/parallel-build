@@ -1,6 +1,6 @@
 import { generateSites } from "./generateSites.js";
 import { ignorePages } from "./ignorePages.js";
-import { checkDiff, setToml } from "./utils.js";
+import { checkDiff, setToml, setParallelBuilt } from "./utils.js";
 
 export const onPreBuild = async function ({ netlifyConfig, utils }) {
   const target = process.env.PARALLEL_PAGE_FRAG;
@@ -20,5 +20,5 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
   }
 
   await ignorePages(path, target);
-  parallelBuilt = true;
+  setParallelBuilt(netlifyConfig);
 };
