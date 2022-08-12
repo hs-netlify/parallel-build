@@ -21,5 +21,5 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
 
   await ignorePages(path, target);
 
-  await setParallelBuilt(netlifyConfig);
+  // await setParallelBuilt(netlifyConfig);
 };
