@@ -20,5 +20,7 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
   }
 
   await ignorePages(path, target);
-  setParallelBuilt(netlifyConfig);
+  console.log("Calling set PB");
+  await setParallelBuilt(netlifyConfig);
+  console.log("Completed set PB");
 };
