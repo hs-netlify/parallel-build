@@ -4,7 +4,7 @@ import { checkDiff, setToml } from "./utils.js";
 
 export const onPreBuild = async function ({ netlifyConfig, utils }) {
   const target = process.env.PARALLEL_PAGE_FRAG;
-  const parallelBuilt = netlifyConfig.build.environment.PARALLEL_BUILT || false;
+  let parallelBuilt = netlifyConfig.build.environment.PARALLEL_BUILT || false;
   const { git, build } = utils;
 
   const path = "./pages";
