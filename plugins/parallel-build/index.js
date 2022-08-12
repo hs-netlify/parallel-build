@@ -2,8 +2,9 @@ import { generateSites } from "./generateSites.js";
 import { ignorePages } from "./ignorePages.js";
 import { checkDiff, setToml, setParallelBuilt } from "./utils.js";
 
+const target = process.env.PARALLEL_PAGE_FRAG;
+
 export const onPreBuild = async function ({ netlifyConfig, utils }) {
-  const target = process.env.PARALLEL_PAGE_FRAG;
   let parallelBuilt = netlifyConfig.build.environment.PARALLEL_BUILT || false;
   const { git, build } = utils;
 

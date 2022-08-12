@@ -30,6 +30,7 @@ export const generateSites = async (path, netlifyConfig) => {
             dir: ".next",
             env: {
               PARALLEL_PAGE_FRAG: `${dir}`,
+              PARALLEL_NETLIFY_API_KEY: token,
             },
           },
           build_settings: {
