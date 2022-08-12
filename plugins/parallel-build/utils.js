@@ -16,12 +16,12 @@ export const setToml = (netlifyConfig, path) => {
       status: 200,
       force: true,
     });
-    // netlifyConfig.redirects.push({
-    //   from: `/${dir}/${dir}/*`,
-    //   to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
-    //   status: 200,
-    //   force: true,
-    // });
+    netlifyConfig.redirects.push({
+      from: `/${dir}/${dir}/*`,
+      to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
+      status: 200,
+      force: true,
+    });
   }
 };
 
