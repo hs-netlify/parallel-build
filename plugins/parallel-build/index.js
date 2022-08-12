@@ -3,6 +3,7 @@ import { ignorePages } from "./ignorePages.js";
 import { checkDiff, setToml } from "./utils.js";
 
 const target = process.env.PARALLEL_PAGE_FRAG;
+const parallelBuilt = netlifyConfig.build.environment.PARALLEL_BUILT || false;
 
 export const onPreBuild = async function ({ netlifyConfig, utils }) {
   const { git, build } = utils;
@@ -15,9 +16,10 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
     setToml(netlifyConfig, path);
   }
   //Put back if we can skip for first build on all endpoints
-  // if (target) {
-  //   await checkDiff(git, target, build);
-  // }
+  if (parallelBuilt) {
+    await checkDiff(git, target, build);
+  }
 
-  ignorePages(path, target);
+  await ignorePages(path, target);
+  parallelBuilt = true;
 };
