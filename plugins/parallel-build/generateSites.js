@@ -38,7 +38,7 @@ export const generateSites = async (path, netlifyConfig) => {
           //     PARALLEL_PAGE_FRAG: `${dir}`,
           //     PARALLEL_NETLIFY_API_KEY: token,
           //   },
-          },
+          // },
           processing_settings: {
             ignore_html_forms: true,
           },
