@@ -1,11 +1,6 @@
 import { generateSites } from "./generateSites.js";
 import { ignorePages } from "./ignorePages.js";
-import {
-  checkDiff,
-  setToml,
-  setParallelBuilt,
-  setNextConfig,
-} from "./utils.js";
+import { checkDiff, setToml, setParallelBuilt } from "./utils.js";
 
 const target = process.env.PARALLEL_PAGE_FRAG;
 
