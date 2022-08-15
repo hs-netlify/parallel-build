@@ -45,7 +45,7 @@ const Movie = ({ movie }) => {
       <>
         {staticGen ? (
           <div className="w-full h-10 flex justify-center items-center bg-red-400 text-white">
-            <span>TEST TITLE!</span>
+            <span>TEST TITLE</span>
           </div>
         ) : null}
       </>
