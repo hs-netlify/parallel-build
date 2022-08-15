@@ -1,6 +1,6 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
-import nextConfig from "../../next.config";
+import nextConfig from "./next.config";
 
 export const getDirectories = (path) => {
   return fs.readdirSync(path).filter((file) => {
@@ -27,7 +27,7 @@ export const setToml = (netlifyConfig, path) => {
 };
 
 export const setNextConfig = () => {
-  nextConfig.assetPrefix = "test";
+  nextConfig["assetPrefix"] = "test";
 };
 
 export const checkDiff = (git, target, build) => {
