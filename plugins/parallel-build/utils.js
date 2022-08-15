@@ -1,5 +1,6 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
+import nextConfig from "../../next.config";
 
 export const getDirectories = (path) => {
   return fs.readdirSync(path).filter((file) => {
@@ -25,13 +26,8 @@ export const setToml = (netlifyConfig, path) => {
   }
 };
 
-export const setPageToml = (netlifyConfig, target) => {
-  netlifyConfig.redirects.push({
-    from: `/${target}/${target}/_next/*`,
-    to: `https://parallel-test-pages-${target}.netlify.app/_next/:splat`,
-    status: 200,
-    force: true,
-  });
+export const setNextConfig = () => {
+  nextConfig.assetPrefix = "test";
 };
 
 export const checkDiff = (git, target, build) => {
