@@ -1,6 +1,6 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
-import nextConfig from "../../../next.config";
+//import nextConfig from "../../../next.config.js";
 
 export const getDirectories = (path) => {
   return fs.readdirSync(path).filter((file) => {
@@ -9,6 +9,7 @@ export const getDirectories = (path) => {
 };
 
 export const setToml = (netlifyConfig, path) => {
+  console.log(path);
   const dirs = getDirectories(path);
   for (const dir of dirs) {
     netlifyConfig.redirects.push({
@@ -27,7 +28,7 @@ export const setToml = (netlifyConfig, path) => {
 };
 
 export const setNextConfig = () => {
-  nextConfig["assetPrefix"] = "test";
+  // nextConfig["assetPrefix"] = "test";
 };
 
 export const checkDiff = (git, target, build) => {
