@@ -11,20 +11,16 @@ export const setToml = (netlifyConfig, path) => {
   const dirs = getDirectories(path);
   for (const dir of dirs) {
     netlifyConfig.redirects.push({
-      from: `/_next/static/*`,
-      to: `/static/:splat`,
-      status: 200,
-    });
-    netlifyConfig.redirects.push({
       from: `/${dir}/*`,
       to: `https://parallel-test-pages-${dir}.netlify.app/${dir}/:splat`,
       status: 200,
       force: true,
     });
     netlifyConfig.redirects.push({
-      from: `/_next/static/*`,
-      to: `https://parallel-test-pages-${dir}.netlify.app/_next/static/:splat`,
-      status: 301,
+      from: `/${dir}/${dir}/*`,
+      to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
+      status: 200,
+      force: true,
     });
   }
 };
