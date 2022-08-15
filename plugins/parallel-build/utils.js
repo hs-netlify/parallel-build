@@ -17,10 +17,9 @@ export const setToml = (netlifyConfig, path) => {
       force: true,
     });
     netlifyConfig.redirects.push({
-      from: `/${dir}/*`,
-      to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
+      from: `/_next/static/*`,
+      to: `https://parallel-test-pages-${dir}.netlify.app/_next/static/:splat`,
       status: 200,
-      force: true,
     });
   }
 };
