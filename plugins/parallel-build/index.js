@@ -14,7 +14,7 @@ export const onPreBuild = async function ({ netlifyConfig, utils }) {
     await generateSites(path, netlifyConfig);
     setToml(netlifyConfig, path);
   } else {
-    //setPageToml(netlifyConfig, target);
+    setPageToml(netlifyConfig, target);
   }
 
   if (parallelBuilt) {
