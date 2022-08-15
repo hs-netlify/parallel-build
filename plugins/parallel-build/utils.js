@@ -24,7 +24,7 @@ export const setToml = (netlifyConfig, path) => {
     netlifyConfig.redirects.push({
       from: `/_next/static/*`,
       to: `https://parallel-test-pages-${dir}.netlify.app/_next/static/:splat`,
-      status: 200,
+      status: 301,
     });
   }
 };
