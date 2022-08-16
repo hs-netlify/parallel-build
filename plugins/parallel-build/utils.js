@@ -1,5 +1,7 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
+const token = process.env.PARALLEL_NETLIFY_API_KEY;
+const api = new NetlifyAPI(token);
 
 export const getDirectories = (path) => {
   return fs.readdirSync(path).filter((file) => {
@@ -52,9 +54,6 @@ export const checkDiff = (git, target, build) => {
 };
 
 export const setParallelBuilt = async (netlifyConfig) => {
-  const token = process.env.PARALLEL_NETLIFY_API_KEY;
-  const api = new NetlifyAPI(token);
-
   const { SITE_ID: site_id } = netlifyConfig.build.environment;
 
   let env = (await api.getSite({ site_id }))?.build_settings?.env || {};
