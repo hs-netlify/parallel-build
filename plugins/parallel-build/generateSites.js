@@ -17,7 +17,7 @@ export const generateSites = async (path, site) => {
     if (!siteNames.includes(`${siteName}-pages-${dir}`)) {
       console.log(`Creating sub-site ${siteName}-pages-${dir}`);
 
-      const site = await api.createSiteInTeam({
+      const zone_site = await api.createSiteInTeam({
         account_slug: account,
         body: {
           name: `${siteName}-pages-${dir}`,
