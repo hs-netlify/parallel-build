@@ -19,7 +19,7 @@ npm install
 Place the following line in your next.config.js to ensure that zones sites have separate asset preffixes.
 
 ```javascript
-assetPrefix: process.env.PARALLEL_PAGE_FRAG || "",
+assetPrefix: process.env.MULTI_ZONE_PAGE_FRAG || "",
 ```
 
 Set the plugin within Netlify.toml

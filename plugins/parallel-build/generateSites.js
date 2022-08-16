@@ -6,10 +6,10 @@ const account = process.env.NETLIFY_ACCOUNT;
 
 const api = new NetlifyAPI(token);
 
-export const generateSites = async (path, siteName) => {
+export const generateSites = async (path, site) => {
   const sites = await api.listSites();
   const siteNames = sites.map((site) => site.name);
-
+  const siteName = site.name;
   const dirs = getDirectories(path);
 
   console.log("Checking sub-sites are created");
@@ -22,10 +22,10 @@ export const generateSites = async (path, siteName) => {
         body: {
           name: `${siteName}-pages-${dir}`,
           repo: {
-            provider: "github",
-            repo: "hs-netlify/parallel-build",
-            private: false,
-            branch: "main",
+            provider: site.build_settings.provider,
+            repo: site.build_settings.repo_path,
+            private: !site.build_settings.public_repo,
+            branch: site.build_settings.repo_branch,
             env: {
               MULTI_ZONE_PAGE_FRAG: `${dir}`,
               NETLIFY_API_KEY: token,

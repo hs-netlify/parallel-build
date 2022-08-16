@@ -1,6 +1,6 @@
 import { generateSites } from "./generateSites.js";
 import { ignorePages } from "./ignorePages.js";
-import { checkDiff, setToml, setParallelBuilt, getSiteName } from "./utils.js";
+import { checkDiff, setToml, setParallelBuilt, getSite } from "./utils.js";
 
 const target = process.env.MULTI_ZONE_PAGE_FRAG;
 
@@ -11,9 +11,9 @@ export const onPreBuild = async function ({ netlifyConfig, utils, constants }) {
   const path = "./pages";
 
   if (!target) {
-    const siteName = await getSiteName(constants.SITE_ID);
-    await generateSites(path, siteName);
-    setToml(netlifyConfig, path, siteName);
+    const site = await getSite(constants.SITE_ID);
+    await generateSites(path, site);
+    setToml(netlifyConfig, path, site);
   }
 
   if (parallelBuilt) {

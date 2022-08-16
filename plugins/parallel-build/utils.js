@@ -27,8 +27,8 @@ export const setToml = (netlifyConfig, path, siteName) => {
   }
 };
 
-export const getSiteName = async (site_id) => {
-  return (await api.getSite({ site_id }))?.name;
+export const getSite = async (site_id) => {
+  return await api.getSite({ site_id });
 };
 
 export const checkDiff = (git, target, build) => {
@@ -58,7 +58,7 @@ export const setParallelBuilt = async (netlifyConfig) => {
 
   let env = (await api.getSite({ site_id }))?.build_settings?.env || {};
 
-  env["MULI_ZONE_BUILT"] = true;
+  env["MULTI_ZONE_BUILT"] = true;
 
   const updatedSite = await api.updateSite({
     site_id,
