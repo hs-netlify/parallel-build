@@ -14,8 +14,6 @@ export const onPreBuild = async function ({ netlifyConfig, utils, constants }) {
     const siteName = await getSiteName(constants.SITE_ID);
     await generateSites(path, siteName);
     setToml(netlifyConfig, path, siteName);
-  } else {
-    setNextConfig();
   }
 
   if (parallelBuilt) {
