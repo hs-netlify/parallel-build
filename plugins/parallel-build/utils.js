@@ -1,6 +1,6 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
-const token = process.env.PARALLEL_NETLIFY_API_KEY;
+const token = process.env.NETLIFY_API_KEY;
 const api = new NetlifyAPI(token);
 
 export const getDirectories = (path) => {

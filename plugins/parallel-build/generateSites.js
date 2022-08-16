@@ -1,8 +1,8 @@
 import { getDirectories } from "./utils.js";
 import { NetlifyAPI } from "netlify";
 
-const token = process.env.PARALLEL_NETLIFY_API_KEY;
-const account = process.env.PARALLEL_NETLIFY_ACCOUNT;
+const token = process.env.NETLIFY_API_KEY;
+const account = process.env.NETLIFY_ACCOUNT;
 
 const api = new NetlifyAPI(token);
 
