@@ -40,4 +40,4 @@ NETLIFY_ACCOUNT; //Account name/slug for deployment account
 
 ## Limitations
 
-Currently the plugin will not support nested dynamic routes i./e ./pages/slug1/slug2
+Currently the plugin will not support nested dynamic routes i.e. ./pages/slug1/slug2
