@@ -6,7 +6,7 @@ const account = process.env.PARALLEL_NETLIFY_ACCOUNT;
 
 const api = new NetlifyAPI(token);
 
-export const generateSites = async (path, netlifyConfig) => {
+export const generateSites = async (path, siteName) => {
   const sites = await api.listSites();
   const siteNames = sites.map((site) => site.name);
 
@@ -14,13 +14,13 @@ export const generateSites = async (path, netlifyConfig) => {
 
   console.log("Checking sub-sites are created");
   for (const dir of dirs) {
-    if (!siteNames.includes(`parallel-test-pages-${dir}`)) {
-      console.log(`Creating sub-site parallel-test-pages-${dir}`);
+    if (!siteNames.includes(`${siteName}-pages-${dir}`)) {
+      console.log(`Creating sub-site ${siteName}-pages-${dir}`);
 
       const site = await api.createSiteInTeam({
         account_slug: account,
         body: {
-          name: `parallel-test-pages-${dir}`,
+          name: `${siteName}-pages-${dir}`,
           repo: {
             provider: "github",
             repo: "hs-netlify/parallel-build",
@@ -37,9 +37,9 @@ export const generateSites = async (path, netlifyConfig) => {
               PARALLEL_NETLIFY_API_KEY: token,
             },
           },
-          // processing_settings: {
-          //   ignore_html_forms: true,
-          // },
+          processing_settings: {
+            ignore_html_forms: true,
+          },
         },
       });
     }

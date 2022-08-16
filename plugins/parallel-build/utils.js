@@ -1,6 +1,5 @@
 import fs from "fs";
 import { NetlifyAPI } from "netlify";
-import nextConfig from "./next.config.js";
 
 export const getDirectories = (path) => {
   return fs.readdirSync(path).filter((file) => {
@@ -8,27 +7,26 @@ export const getDirectories = (path) => {
   });
 };
 
-export const setToml = (netlifyConfig, path) => {
-  console.log(path);
+export const setToml = (netlifyConfig, path, siteName) => {
   const dirs = getDirectories(path);
   for (const dir of dirs) {
     netlifyConfig.redirects.push({
       from: `/${dir}/${dir}/*`,
-      to: `https://parallel-test-pages-${dir}.netlify.app/:splat`,
+      to: `https://${siteName}-pages-${dir}.netlify.app/:splat`,
       status: 200,
       force: true,
     });
     netlifyConfig.redirects.push({
       from: `/${dir}/*`,
-      to: `https://parallel-test-pages-${dir}.netlify.app/${dir}/:splat`,
+      to: `https://${siteName}-pages-${dir}.netlify.app/${dir}/:splat`,
       status: 200,
       force: true,
     });
   }
 };
 
-export const setNextConfig = () => {
-  nextConfig["assetPrefix"] = "test";
+export const getSiteName = async (site_id) => {
+  return (await api.getSite({ site_id }))?.name;
 };
 
 export const checkDiff = (git, target, build) => {
@@ -59,8 +57,7 @@ export const setParallelBuilt = async (netlifyConfig) => {
 
   const { SITE_ID: site_id } = netlifyConfig.build.environment;
 
-  let env =
-    (await api.getSite({ site_id: site_id }))?.build_settings?.env || {};
+  let env = (await api.getSite({ site_id }))?.build_settings?.env || {};
 
   env["PARALLEL_BUILT"] = true;
 
