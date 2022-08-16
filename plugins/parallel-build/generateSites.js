@@ -37,9 +37,6 @@ export const generateSites = async (path, siteName) => {
               PARALLEL_NETLIFY_API_KEY: token,
             },
           },
-          processing_settings: {
-            ignore_html_forms: true,
-          },
         },
       });
     }
