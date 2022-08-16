@@ -2,7 +2,6 @@ import { getDirectories } from "./utils.js";
 import { NetlifyAPI } from "netlify";
 
 const token = process.env.NETLIFY_API_KEY;
-const account = process.env.NETLIFY_ACCOUNT;
 
 const api = new NetlifyAPI(token);
 
@@ -18,7 +17,7 @@ export const generateSites = async (path, site) => {
       console.log(`Creating sub-site ${siteName}-pages-${dir}`);
 
       const zone_site = await api.createSiteInTeam({
-        account_slug: account,
+        account_slug: site.account_slug,
         body: {
           name: `${siteName}-pages-${dir}`,
           repo: {

@@ -31,11 +31,10 @@ Set the plugin within Netlify.toml
 
 ## Deployment
 
-Deploy the site to Netlify using the git connected CI/CD pipeline. Set the following environment variables on the Netlify UI:
+Deploy the site to Netlify using the git connected CI/CD pipeline. Set the following environment variable on the Netlify UI:
 
 ```javascript
 NETLIFY_API_KEY; //Netlify api token user acccount
-NETLIFY_ACCOUNT; //Account name/slug for deployment account
 ```
 
 ## Limitations
