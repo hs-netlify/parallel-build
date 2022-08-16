@@ -58,7 +58,7 @@ export const setParallelBuilt = async (netlifyConfig) => {
 
   let env = (await api.getSite({ site_id }))?.build_settings?.env || {};
 
-  env["PARALLEL_BUILT"] = true;
+  env["MULI_ZONE_BUILT"] = true;
 
   const updatedSite = await api.updateSite({
     site_id,
