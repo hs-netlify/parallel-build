@@ -27,14 +27,14 @@ export const generateSites = async (path, siteName) => {
             private: false,
             branch: "main",
             env: {
-              PARALLEL_PAGE_FRAG: `${dir}`,
-              PARALLEL_NETLIFY_API_KEY: token,
+              MULTI_ZONE_PAGE_FRAG: `${dir}`,
+              NETLIFY_API_KEY: token,
             },
           },
           build_settings: {
             env: {
-              PARALLEL_PAGE_FRAG: `${dir}`,
-              PARALLEL_NETLIFY_API_KEY: token,
+              MULTI_ZONE_PAGE_FRAG: `${dir}`,
+              NETLIFY_API_KEY: token,
             },
           },
         },
